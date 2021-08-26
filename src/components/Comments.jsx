@@ -1,5 +1,5 @@
 import { Component } from "react";
-import {  Row } from "react-bootstrap";
+import {  Form, Row } from "react-bootstrap";
 
 class CommentsForm extends Component {
     state ={
@@ -30,15 +30,34 @@ class CommentsForm extends Component {
             }
         })
 
+        if (response.ok) {
+             this.setState({
+                 commentUp: {
+                    "comment":  "",
+                    "rate":  "",
+                    "elementId": "",
+                 }
+             })
+        } else {
+             alert("Something's gone wrong :(")
+        }
+
         } catch (error) {
             console.log(error)
-            alert("Something's gone wrong :(")
+           
         }
     }
     render()
  {
 return (
     <Row className="mt-5 justify-content-center"> 
+    <Form.Label>Write a Comment :D</Form.Label>
+    <Form.Control
+    type="text"
+    placeholder="Write here your thoughts about this book"
+    value={this.state.commentUp.comment}
+    onChange={(e) => this.handleComment(e, "comment")}
+    />
     <BookComments book={this.state.comment}/>
   </Row>
 )
