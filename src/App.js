@@ -7,7 +7,7 @@ import MyBadge from './components/MyBadge';
 import BookList from './components/BookList';
 import SingleBook from './components/SingleBook';
 import books from './data/books.json';
-import Comments from './components/Comments';
+import CommentsForm from './components/Comments';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
    <MyBadge text="NEW!!" color="info" />
    <Row>
 <SingleBook book={books[0]}/>
-<Comments/>
+<CommentsForm/>
     <BookList books={books}/>
 
    </Row>
