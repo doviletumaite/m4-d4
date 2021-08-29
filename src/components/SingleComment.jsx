@@ -11,7 +11,7 @@ const deleteComment = async (asin) => {
       }
     }) 
     if (response.ok) {
-       alert("don't worry nobady will see that")
+       alert("don't worry nobody will see that")
     } else{
       alert("oh no that mess is still visible")
     }
