@@ -1,10 +1,14 @@
 import { Component } from "react";
 import CommentList from './CommentList'
 import AddComment from './AddComment'
+import Loading from "./Loading";
+import WarningSign from "./WarningSign";
 
 class CommentArea extends Component {
   state = {
     comments: [],
+    isLoading: true,
+    isError: false
   };
 
   componentDidMount = async () => {
@@ -20,20 +24,32 @@ class CommentArea extends Component {
         }
       );
       console.log(response);
-      let comments= await response.json() // this will convert an object in a array
-      this.setState({comments: comments}) // or ({comments})
+      if(response.ok) {
+              let comments= await response.json() // this will convert an object in a array
+      this.setState({comments: comments, isLoading: false, isError: false}) // or ({comments})
+      } else {
+          this.setState({ isLoading: false, isError:true})
+      }
+  
     } catch (error) {
       console.log("we have a problem!", error)
-
+      this.setState({ isLoading: false,  isError:true})
     }
   };
 
   render() {
     return (
-    <div>LEAVE A NICE COMMENT :)
+    <div>
+       
+        LEAVE A NICE COMMENT :)
         <AddComment asin={this.props.asin}/>
+        {
+            this.state.isLoading && <Loading/>
+        }
  <CommentList commentsToShow={this.state.comments}/>
-
+  {
+            this.state.isError && <WarningSign text="error"/>
+        }
     </div>
    )
   }

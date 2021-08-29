@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       {/* <Input /> */}
       <Container>
-        <WarningSign/>
+        <WarningSign />
         <MyBadge/>
         <Row>
           <SingleBook book={books[0]}/>
