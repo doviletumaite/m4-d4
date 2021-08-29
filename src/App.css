@@ -34,7 +34,10 @@
  .card .card-body{
    height: 100px;
  }
- 
+ label {
+  font-weight: bold; 
+  margin-right: 5px
+ }
  
 
 @keyframes App-logo-spin {

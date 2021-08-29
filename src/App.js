@@ -1,26 +1,28 @@
-
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import WarningSign from './components/WarningSign';
-import { Container, Row } from 'react-bootstrap';
-import MyBadge from './components/MyBadge';
-import BookList from './components/BookList';
-import SingleBook from './components/SingleBook';
-import books from './data/books.json';
-import CommentsForm from './components/Comments';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import SingleBook from "./components/SingleBook";
+// import Input from "./components/Input";
+import books from "../src/data/books.json";
+import BookList from "./components/BookList";
+import { Row, Container } from "react-bootstrap";
+import WarningSign from "./components/WarningSign";
+import MyBadge from "./components/MyBadge";
 
 function App() {
   return (
-    <Container>
-   <WarningSign text="Warning!" />
-   <MyBadge text="NEW!!" color="info" />
-   <Row>
-<SingleBook book={books[0]}/>
-<CommentsForm/>
-    <BookList books={books}/>
-
-   </Row>
-   </Container>
+    <div className="App">
+      {/* <Input /> */}
+      <Container>
+        <WarningSign/>
+        <MyBadge/>
+        <Row>
+          <SingleBook book={books[0]}/>
+         <BookList books={books}/>
+          
+        </Row>
+      </Container>
+    </div>
   );
 }
 
