@@ -26,6 +26,7 @@ sendComment = async (e) => {
   if (response.ok) {
       // the comment has been sent succesfully!!
       alert('Comment was sent!')
+      this.props.onNewComment(await response.json())
   } else {
       console.log('error')
       alert('something went wrong')

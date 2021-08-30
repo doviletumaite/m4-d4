@@ -23,7 +23,7 @@ class SingleBook extends React.Component{
       </Card.Body> 
     </Card>
     {
-         this.state.selected && <CommentArea asin={this.props.book.asin} />
+         this.state.selected && <CommentArea asin={this.props.book.asin} onNewComment={this.onNewComment} />
     }
     </>
   )
