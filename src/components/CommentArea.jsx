@@ -25,7 +25,7 @@ fetchComments = async () => {
     console.log(response);
     if(response.ok) {
             let comments= await response.json() // this will convert an object in a array
-            this.props.onNewComment(await response.json())
+         //   this.props.onNewComment(await response.json())
     this.setState({comments: comments, isLoading: false, isError: false}) // or ({comments})
     } else {
       console.log("response k.o. X(")
@@ -48,7 +48,7 @@ fetchComments = async () => {
 // }
 componentDidUpdate(previousProps, previousState) {
   console.log("so that is the prev prop and the prev state:",previousProps, previousState)
-  if (previousState !==this.props.asin ) {
+  if (previousProps !== this.props.asin ) {
     this.fetchComments()
   }
 }
