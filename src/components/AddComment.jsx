@@ -19,9 +19,13 @@ const AddComment = () => {
         rate: 1,
         elementId: null
                   })
+    //  const [comment, setComment] = useState("")  
+    //  const [rate, setRate] = useState(1)
+    //  const [elementId, setElementId] = useState (null)           
 
-sendComment = async (e) => {
-  e.preventDefault()
+useEffect( () => {
+//   e.preventDefault()
+ const sendComment =  async() => {
   try {
       let response = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
           method: "POST",
@@ -43,6 +47,9 @@ sendComment = async (e) => {
   console.log('error')
 }
 }
+sendComment()
+}, [])
+
 
 
 return (
