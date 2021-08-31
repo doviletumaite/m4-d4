@@ -9,15 +9,19 @@ import {
   FormControl,
 } from "react-bootstrap";
 import SingleBook from "./SingleBook";
+import CommentArea from "./CommentArea";
 
 class BookList extends React.Component {
   state = {
     searchBook: "",
+    selectedBook: null
   };
   render() {
     return (
       <Container>
         <Row>
+          <Col md={8}>
+          <Row>
           <Col>
             <InputGroup className="mb-3 d-flex align-items-center">
               <Form.Label>
@@ -44,9 +48,16 @@ class BookList extends React.Component {
         <Row>
           {this.props.books.filter(book => book.title.toLowerCase().includes(this.state.searchBook)).map((book) => (
             <Col xs={3} key={book.asin}>
-              <SingleBook book={book} />
+              <SingleBook book={book} changeSelectedBook={asin => this.setState({
+                selecedBook: asin
+              })} />
             </Col>
           ))}
+        </Row>
+        </Col>
+        <Col md={4}>
+         <CommentArea asin={this.props.book.asin}/>
+        </Col>
         </Row>
       </Container>
     );

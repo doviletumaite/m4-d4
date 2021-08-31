@@ -20,6 +20,8 @@ fetchComments = async () => {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTJiYTY0Nzk5OGZmODAwMTVhMzM1ZTEiLCJpYXQiOjE2MzAyNTA1NjcsImV4cCI6MTYzMTQ2MDE2N30.fjwBzicLDqvpDPoHDNeOTPFCpomeo2Zu4lr109e37EQ",
         },
+        method: "POST",
+        body: JSON.stringify()
       }
     );
     console.log(response);
@@ -48,8 +50,9 @@ fetchComments = async () => {
 // }
 componentDidUpdate(previousProps, previousState) {
   console.log("so that is the prev prop and the prev state:",previousProps, previousState)
-  if (previousProps !== this.props.asin ) {
+  if (previousState !== this.state.asin ) {
     this.fetchComments()
+   // this.setState({this.props.asin})
   }
 }
   render() {

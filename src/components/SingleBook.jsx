@@ -1,19 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import CommentArea from "./CommentArea";
-
+// import BookList from "./BookList";
 
 class SingleBook extends React.Component{
-  state= {
-    selected: false
-  }
+  // state= {
+  //   selected: false
+  // }
  render(){
   return (
     <>
     <Card className="book-cover mx-2 my-2 mx-auto" 
-    onClick= {() => this.setState({selected: !this.state.selected})}
-    style={{background: this.state.selected ? 
-                    "red" : "white"}}
+    onClick= {() => this.props.changeSelectedBook(this.props.book.asin)}
+    // style={{background: this.props.changeSelectedBook ? 
+    //                 "red" : "white"}}
     >
       <Card.Img variant="top" src={this.props.book.img} />
        <Card.Body>

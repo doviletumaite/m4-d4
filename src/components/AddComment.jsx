@@ -1,16 +1,24 @@
 import {Component} from "react";
 import {Form, Button} from"react-bootstrap";
+import { useEffect } from "react";
+import { useState } from "react";
 
 
-class AddComment extends Component {
+const AddComment = () => {
 
-    state = {
-        comment: {
-            comment:"",
-            rate:1,
-            elementId: this.props.asin
-        }
-    }
+    // state = {
+    //     comment: {
+    //         comment:"",
+    //         rate:1,
+    //         elementId: this.props.asin
+    //     }
+    // }
+
+    const [comment, setComment] = useState({
+        comment: '',
+        rate: 1,
+        elementId: null
+                  })
 
 sendComment = async (e) => {
   e.preventDefault()
@@ -36,7 +44,7 @@ sendComment = async (e) => {
 }
 }
 
-render() {
+
 return (
   <div>
       <Form onSubmit={this.sendComment}>
@@ -77,7 +85,7 @@ return (
   </div>
 )
 }
-}
+
 
 export default AddComment
 
