@@ -1,5 +1,4 @@
-
-    import { Spinner } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
 
 const Loading = () => <Spinner animation="border" variant="danger" />
 

@@ -10,7 +10,7 @@ const CommentList = ({commentsToShow}) => (
               commentsToShow.map( comment => (
                  <ListGroup.Item key={comment._id}
                   >
-                     <SingleComment comment={comment} key={comment._id}/>
+                     <SingleComment comment={comment} key={comment._id} onNewComment={this.props.onNewComment}/>
                      </ListGroup.Item>
               ) )
 

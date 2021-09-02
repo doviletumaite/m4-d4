@@ -1,4 +1,5 @@
-import React from "react";
+ import {useState} from "react";
+
 import {
   Col,
   Container,
@@ -11,12 +12,14 @@ import {
 import SingleBook from "./SingleBook";
 import CommentArea from "./CommentArea";
 
-class BookList extends React.Component {
-  state = {
-    searchBook: "",
-    selectedBook: null
-  };
-  render() {
+const BookList = ({ books }) =>  {
+  // state = {
+  //   searchBook: "",
+  //   selectedBook: null
+  // };
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedBook, setSelectedBook] = useState(null)
+
     return (
       <Container>
         <Row>
@@ -32,12 +35,9 @@ class BookList extends React.Component {
                 placeholder=""
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
-               value={this.state.searchBook}
-                   onChange={e => {
-                    e.preventDefault();
-                    this.setState({searchBook: e.target.value})
-                //      console.log(e.target.value);
-               }}
+               value={searchQuery}
+               onChange={e => setSearchQuery(e.target.value)}
+              
               />
               <Button variant="outline-secondary" id="button-addon2">
                 Search
@@ -46,22 +46,20 @@ class BookList extends React.Component {
           </Col>
         </Row>
         <Row>
-          {this.props.books.filter(book => book.title.toLowerCase().includes(this.state.searchBook)).map((book) => (
+          {books.filter(book => book.title.toLowerCase().includes(searchQuery)).map((book) => (
             <Col xs={3} key={book.asin}>
-              <SingleBook book={book} changeSelectedBook={asin => this.setState({
-                selecedBook: asin
-              })} />
+              <SingleBook book={book} selectedBook={selectedBook} changeSelectedBook={asin => setSelectedBook(asin)} />
             </Col>
           ))}
         </Row>
         </Col>
         <Col md={4}>
-         <CommentArea asin={this.props.book.asin}/>
+         <CommentArea asin={selectedBook}/>
         </Col>
         </Row>
       </Container>
     );
   }
-}
+
 
 export default BookList;
