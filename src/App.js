@@ -8,13 +8,14 @@ import BookList from "./components/BookList";
 import { Row, Container } from "react-bootstrap";
 import WarningSign from "./components/WarningSign";
 import MyBadge from "./components/MyBadge";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-//import Registration from "./components/Registration"
-import RegistrationButton from "./components/RegistrationButton";
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import Registration from "./components/Registration"
+import Layout from "./components/Layout";
 
 function App() {
   return (
   <Router>
+      <Switch>
       <div className="App">
       {/* <Input /> */}
       <Container>
@@ -24,8 +25,13 @@ function App() {
         <Route
             path="/registration"
             exact
-            component={RegistrationButton}
+            render={() => (
+              <Layout>
+                <Registration/>
+              </Layout>
+            )}
           />
+      
         <Row>
           <SingleBook book={books[0]}/>
          <BookList books={books}/>
@@ -33,6 +39,7 @@ function App() {
         </Row>
       </Container>
     </div>
+      </Switch>
   </Router>
   );
 }
