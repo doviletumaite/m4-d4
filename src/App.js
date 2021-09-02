@@ -8,14 +8,24 @@ import BookList from "./components/BookList";
 import { Row, Container } from "react-bootstrap";
 import WarningSign from "./components/WarningSign";
 import MyBadge from "./components/MyBadge";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+//import Registration from "./components/Registration"
+import RegistrationButton from "./components/RegistrationButton";
 
 function App() {
   return (
-    <div className="App">
+  <Router>
+      <div className="App">
       {/* <Input /> */}
       <Container>
         <WarningSign />
+    
         <MyBadge/>
+        <Route
+            path="/registration"
+            exact
+            component={RegistrationButton}
+          />
         <Row>
           <SingleBook book={books[0]}/>
          <BookList books={books}/>
@@ -23,6 +33,7 @@ function App() {
         </Row>
       </Container>
     </div>
+  </Router>
   );
 }
 
