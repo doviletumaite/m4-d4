@@ -11,6 +11,7 @@ import MyBadge from "./components/MyBadge";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Registration from "./components/Registration"
 import Layout from "./components/Layout";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -23,6 +24,15 @@ function App() {
     
         <MyBadge/>
         <Route
+            path="/"
+            exact
+            render={() => (
+              <Layout>
+                <Home subTitle="Homepage" />
+              </Layout>
+            )}
+          />
+        <Route
             path="/registration"
             exact
             render={() => (
@@ -32,11 +42,7 @@ function App() {
             )}
           />
       
-        <Row>
-          <SingleBook book={books[0]}/>
-         <BookList books={books}/>
-          
-        </Row>
+      
       </Container>
     </div>
       </Switch>
